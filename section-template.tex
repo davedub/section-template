@@ -1,0 +1,182 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+
+% use this package to get a sense for eventual length (delete later)
+\usepackage{lipsum}
+
+\usepackage[
+    style=authoryear-ibid,
+    backend=biber,
+    sorting=ynt
+]{biblatex}
+
+\renewcommand{\postnotedelim}{.\space}
+
+\usepackage{lipsum}
+
+% add more space between footnote line and main text
+\addtolength{\skip\footins}{1pc plus 2pt}
+
+\usepackage{changepage}
+\usepackage{titlesec} % to center the title of the section
+\usepackage[OT1]{fontenc}
+\usepackage{lmodern}
+% \usepackage{footnote}
+% ''hang'' option creates hanging indent between number and text within footnote
+\usepackage[hang]{footmisc}
+
+\hbadness=99999 % or any number >=10000
+% \hbadness variable doesn't affect typography 
+% it just tells TeX the threshold for printing
+\hfuzz=12pt % suppress overfull hbox messages
+\vfuzz=30pt % suppress overfull vbox messages
+
+\usepackage{newunicodechar}
+\newunicodechar{ʼ}{'}
+\newunicodechar{Ḥ}{\d{H}} % \d is dot under accent
+\newunicodechar{ḥ}{\d{h}}
+
+% https://tex.stackexchange.com/a/552852
+\DeclareFontSeriesDefault[sf]{bf}{bx}
+
+\usepackage{sansmathfonts}
+\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage{textcomp}
+\usepackage{setspace}
+\usepackage{hyphenat}
+\usepackage{csquotes}
+\usepackage[titles]{tocloft}
+
+\renewcommand{\contentsname}{\hfill\bfseries\large Section of ``Arablized Native'' monograph \hfill}   
+\renewcommand{\cftaftertoctitle}{\hfill}
+
+
+\usepackage{url}
+% \renewcommand{\UrlFont}{\ttfamily\scriptsize}
+\tolerance=9000
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
+
+% no PDF watermark, refer to GDrive doc for more info ...
+
+% add a dot after the section number
+\usepackage{titlesec}
+
+
+\titleformat{\section}[display]{\centering\raggedright\large\bfseries}{\thesection.}{1ex}{}
+
+\renewcommand*{\mkibid}[1]{\mkbibemph{#1}}
+
+% making footnotes endnotes
+\usepackage{endnotes}
+% \let\footnote=\endnote
+
+\usepackage{fancyhdr, graphicx,lastpage}
+\fancypagestyle{plain}{
+  \fancyhf{} % clear existing header/footer entries
+  \fancyhead[CO]{\footnotesize{\textsc{\textit{DRAFT SECTION IN UNPUBLISHED MANUSCRIPT}\\ NO DISTRIBUTION PERMITTED EXCEPT AS AUTHORIZED BY AUTHOR \\ (FOR MORE INFO, EMAIL AUTHORADDRESS@EMAILACCOUNT.COM)}}}
+    \fancyfoot[L]{\footnotesize{\textsc{Interim draft as of:\\January XX, 202X}}}
+    \fancyfoot[C]{\footnotesize{--~\thepage~--}}
+    \fancyfoot[R]{\footnotesize{\textsc{$\copyright$ \hspace{.02cm} [Author's Name] \\ Certain rights reserved.}}}
+}
+\setlength{\headheight}{52pt}% ...at least 51.60004pt
+
+\usepackage{textcomp}
+\newcommand{\footibid}{\textit{ibid.}}
+\addbibresource{section-template.bib} %Imports bibliography file
+\widowpenalty10000
+\clubpenalty10000
+
+\setlength{\marginparwidth}{6pt}
+\setlength{\marginparsep}{6pt}
+\setlength{\emergencystretch}{2em}
+\DeclareAutoPunct{.}
+
+\DeclareUnicodeCharacter{202F}{\,}
+\DeclareUnicodeCharacter{03C3}{\σ}
+\DeclareUnicodeCharacter{041F}{\П}
+\DeclareUnicodeCharacter{0442}{\т}
+\DeclareUnicodeCharacter{043E}{\о}
+\DeclareUnicodeCharacter{02BF}{\ʿ}
+
+\setcounter{tocdepth}{1}
+\renewcommand{\cftsecleader}{\bfseries\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsecaftersnum}{.} % add dot after section number in TOC
+
+\renewcommand{\thesection}{\arabic{section}.}
+
+% NEW
+\renewcommand\cftsecfont{\scshape}
+
+% ------------------------
+
+\begin{document}
+%% NEW
+% \titleformat{\section}
+% %  {\normalfont\scshape\normalsize\bfseries}{\thesection.}{10pt}{\large}
+%   {\centering\normalfont\scshape\normalsize\bfseries}{\thesection}{10pt}{\large}
+% % \maketitle
+% \pagestyle{plain}
+
+\titleformat{\section}
+ %  {\normalfont\scshape\normalsize\bfseries}{\thesection.}{10pt}{\large}
+   {\normalfont\scshape\normalsize\bfseries}{\thesection}{10pt}{\large}
+ % \maketitle
+% \pagestyle{plain}
+
+% \onehalfspacing
+\begin{spacing}{1.35}
+
+%% Section 7
+%% ---------------------------
+\setcounter{section}{6}  % Set section number to 3
+\section{Section Name Goes Here}
+\pagestyle{plain}
+
+ This is a paragraph with a few footnotes in it. The first is ``footnote,'' which is simply text inside the brackets of the footnote;\footnote{The first is the footnote but it could be to a citation that is not listed in the .bib file.}, another is a 
+``footfullcite,'' meaning this is the first time the cite has appeared;\footfullcite[][p. 303]{Ellison-1985} and a third is a ``footcite'' (meaning, it will reflect that the footfullcite has been cited earlier.)\footcite[][p. 304]{Ellison-1985}. The rest of this is dummy text using the ipsum package, except that here si an excerpt of a source with appropriate indentation. The first footfullcite was to an article; this one is to a book.\footfullcite[][p. 349]{Banton-1983} And here is a footcite to the same source:\footcite[][p. 392]{Banton-1983}
+
+\begin{adjustwidth}{.65cm}{.5cm}
+  \begin{singlespace}
+  ``Do you like LaTeX? If so, you may find this template useful for creating a section to a longer document. When you are finished editing the section, you can drop out the front matter and drop it into your longer document, with a table of contents (not shown here) and a bibliography (which is shown here). Happy LaTeXing!''
+  \end{singlespace}
+  \end{adjustwidth}
+
+\noindent
+Note also that the number of this section is not set dynamically. Instead, using the ``setcounter'' directive, the last (dummy) section is specified as a certain number so that the following section is that number + 1. Also, this is a new paragraph because there is a line between it and preceding text, but to make it look like a continuation of the prior paragraph (after the indented excerpt), the ``noindent'' directive is used to suppress the indentation on the first line of the paragraph.
+  
+  \lipsum[1-2][]
+  
+  \begin{center}
+  *\hspace{15pt} *\hspace{15pt} *
+\end{center}
+
+\lipsum[1-2][]
+
+\clearpage
+
+\begin{adjustwidth}{.65cm}{.5cm}
+  \begin{center}
+    \Large\textbf{Bibliography}
+  \end{center}
+\end{adjustwidth}
+\vspace{-0.5cm}
+
+\printbibliography[
+  heading=subbibintoc,
+  type=article,
+  title={Articles},
+  notkeyword=exclude
+]
+
+\printbibliography[
+  heading=subbibintoc,
+  type=book, 
+  title={Books},
+  notkeyword=exclude
+]
+
+\end{spacing}
+\end{document}
